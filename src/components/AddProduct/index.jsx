@@ -1,48 +1,39 @@
-import React from 'react';
-import { useForm } from 'react-hook-form';
+import React, { useState } from 'react';
 
-const FormValues = {
-      title: String,
-      completed: String
-}
 
 const AddProduct = ({ onSubmits }) => {
 
-      const { register, handleSubmit } = useForm(FormValues);
+      const [value, setValue] = useState('');
+      
+      const handleChangeValue = (e) => {
+            setValue(e.target.value)
+      }
 
-      const onSubmit = (data, e) => {
-            const newItem = {
-                  title: data.title,
-                  completed: data.completed
+      const handleSubmit = (e) => {
+            e.preventDefault();
+
+            const formValue = {
+                  title: value,
+                  completed: false
             }
-            onSubmits(newItem);
-            // console.log('giá trị : ',newItem);
-            //reset form
-            e.target.reset();
+
+            onSubmits(formValue);
+            setValue('')
       }
 
       return (
             <div>
-                  <form className="m-5" onSubmit={handleSubmit(onSubmit)}>
+                  <form className="m-5" onSubmit={handleSubmit}>
                         <div className="mb-1">
                               <label htmlFor="title" className="form-label">Title</label>
                               <input 
-                                    {...register("title")}
+                                    name="title"
                                     type="text" 
                                     className="form-control" 
                                     placeholder="Title" 
                                     id="title"
-                              />
-                        </div>
-
-                        <div className="mb-3">
-                              <label htmlFor="completed" className="form-label">Completed</label>
-                              <input 
-                                    {...register("completed")}
-                                    type="text" 
-                                    className="form-control" 
-                                    placeholder="Completed" 
-                                    id="completed"
+                                    value={value}
+                                    onChange={handleChangeValue}
                               />
                         </div>
 

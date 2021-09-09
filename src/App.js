@@ -5,21 +5,22 @@ import ListProduct from './components/ListProduct';
 
 function App() {
   const [productList, setListProduct] = useState([
-    { id: 0, title: 'sản phẩm 1', completed: 'ahaaaaaaa'},
-    { id: 1, title: 'sản phẩm 2', completed: 'ohooooooo'},
-    { id: 2, title: 'sản phẩm 3', completed: 'ahiiiiiii'}
+    { id: 0, title: 'sản phẩm 1', completed: true},
+    { id: 1, title: 'sản phẩm 2', completed: false},
+    { id: 2, title: 'sản phẩm 3', completed: false}
 
   ]);
 
-  const handleOnSubmit = (newItem) => {
-    console.log('giá trị trong form file App : ', newItem);
+  const handleOnSubmit = (formValue) => {
+    console.log('giá trị trong form file App : ', formValue);
     const newProduct = {
       id: productList.length + 1,
-      ...newItem
+      ...formValue
     }
     const newProductList = [...productList];
     newProductList.push(newProduct);
     setListProduct(newProductList)
+    
   }
   
 
