@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import AddProduct from './components/AddProduct';
 import ListProduct from './components/ListProduct';
+import SumInput from './components/SumInput';
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
       <ListProduct todo={productList} />
       <h2 className="bg-warning text-center">Thêm Todo</h2>
       <AddProduct onSubmits={handleOnSubmit} />
+      <SumInput />
     </div>
   );
 }

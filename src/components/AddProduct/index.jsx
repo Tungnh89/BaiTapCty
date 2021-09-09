@@ -22,7 +22,7 @@ const AddProduct = ({ onSubmits }) => {
       }
 
       return (
-            <div>
+            <div className="container">
                   <form className="m-5" onSubmit={handleSubmit}>
                         <div className="mb-1">
                               <label htmlFor="title" className="form-label">Title</label>
